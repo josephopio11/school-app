@@ -1,8 +1,8 @@
 // TEMPORARY DATA
 
-type RoleTypes = "admin" | "teacher" | "student" | "parent" | "staff";
+type RoleTypes = "admin" | "teacher" | "student" | "parent";
 
-export const role: RoleTypes = "student";
+export const userRole: RoleTypes = "admin";
 
 export const teachersData = [
   {
@@ -115,6 +115,30 @@ export const teachersData = [
   },
   {
     id: 10,
+    teacherId: "1234567890",
+    name: "John Glover",
+    email: "john@glover.com",
+    photo:
+      "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Biology"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 11,
+    teacherId: "1234567890",
+    name: "John Glover",
+    email: "john@glover.com",
+    photo:
+      "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Biology"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+  {
+    id: 12,
     teacherId: "1234567890",
     name: "John Glover",
     email: "john@glover.com",

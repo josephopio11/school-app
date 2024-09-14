@@ -1,4 +1,23 @@
-import Image from "next/image";
+import { userRole } from "@/lib/data";
+import {
+  BookCheck,
+  BookOpenCheck,
+  Calendar,
+  ClipboardPenLine,
+  Fence,
+  GraduationCap,
+  Home,
+  ListCheck,
+  LogOut,
+  Megaphone,
+  MessageCircleMore,
+  Settings2,
+  Speech,
+  UserCircle2,
+  UserRoundCheck,
+  Users,
+  UsersRound,
+} from "lucide-react";
 import Link from "next/link";
 
 const menuItems = [
@@ -6,85 +25,85 @@ const menuItems = [
     title: "MENU",
     items: [
       {
-        icon: "/assets/home.png",
+        icon: Home,
         label: "Home",
-        href: "/",
+        href: `/${userRole}`,
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assets/teacher.png",
+        icon: GraduationCap,
         label: "Teachers",
         href: "/list/teachers",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/assets/student.png",
+        icon: UsersRound,
         label: "Students",
         href: "/list/students",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/assets/parent.png",
+        icon: Users,
         label: "Parents",
         href: "/list/parents",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/assets/subject.png",
+        icon: ClipboardPenLine,
         label: "Subjects",
         href: "/list/subjects",
         visible: ["admin"],
       },
       {
-        icon: "/assets/class.png",
+        icon: Fence,
         label: "Classes",
         href: "/list/classes",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/assets/lesson.png",
+        icon: Speech,
         label: "Lessons",
         href: "/list/lessons",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/assets/exam.png",
+        icon: BookOpenCheck,
         label: "Exams",
         href: "/list/exams",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assets/assignment.png",
+        icon: BookCheck,
         label: "Assignments",
         href: "/list/assignments",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assets/result.png",
+        icon: ListCheck,
         label: "Results",
         href: "/list/results",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assets/attendance.png",
+        icon: UserRoundCheck,
         label: "Attendance",
         href: "/list/attendance",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assets/calendar.png",
+        icon: Calendar,
         label: "Events",
         href: "/list/events",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assets/message.png",
+        icon: MessageCircleMore,
         label: "Messages",
         href: "/list/messages",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assets/announcement.png",
+        icon: Megaphone,
         label: "Announcements",
         href: "/list/announcements",
         visible: ["admin", "teacher", "student", "parent"],
@@ -95,19 +114,19 @@ const menuItems = [
     title: "OTHER",
     items: [
       {
-        icon: "/assets/profile.png",
+        icon: UserCircle2,
         label: "Profile",
         href: "/profile",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assets/setting.png",
+        icon: Settings2,
         label: "Settings",
         href: "/settings",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assets/logout.png",
+        icon: LogOut,
         label: "Logout",
         href: "/logout",
         visible: ["admin", "teacher", "student", "parent"],
@@ -124,16 +143,20 @@ const MainMenu = () => {
           <span className="hidden lg:block text-gray-400 font-light my-4">
             {item.title}
           </span>
-          {item.items.map((link) => (
-            <Link
-              href={link.href}
-              key={link.label}
-              className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2"
-            >
-              <Image src={link.icon} alt={link.label} width={20} height={20} />
-              <span className="hidden lg:block">{link.label}</span>
-            </Link>
-          ))}
+          {item.items.map((link) => {
+            if (link.visible.includes(userRole)) {
+              return (
+                <Link
+                  href={link.href}
+                  key={link.label}
+                  className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2"
+                >
+                  <link.icon size={20} className="text-gray-500" />
+                  <span className="hidden lg:block">{link.label}</span>
+                </Link>
+              );
+            }
+          })}
         </div>
       ))}
     </div>
