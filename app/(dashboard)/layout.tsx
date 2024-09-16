@@ -12,7 +12,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           className="flex items-center lg:justify-start justify-center gap-2"
         >
           <Image src="/assets/logo.png" alt="Logo" width={32} height={32} />
-          <span className="hidden lg:block">CoolShule</span>
+          <span className="hidden lg:block text-lg font-bold">CoolShule</span>
         </Link>
         <MainMenu />
       </div>

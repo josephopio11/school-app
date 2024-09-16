@@ -1,4 +1,7 @@
+"use client";
+
 import { userRole } from "@/lib/data";
+import { cn } from "@/lib/utils";
 import {
   BookCheck,
   BookOpenCheck,
@@ -19,6 +22,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const menuItems = [
   {
@@ -136,6 +140,7 @@ const menuItems = [
 ];
 
 const MainMenu = () => {
+  const pathname = usePathname();
   return (
     <div className="mt-4 text-sm">
       {menuItems.map((item) => (
@@ -149,9 +154,12 @@ const MainMenu = () => {
                 <Link
                   href={link.href}
                   key={link.label}
-                  className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2"
+                  className={cn(
+                    "group flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 hover:bg-gray-100 hover:text-black px-3 rounded-md",
+                    pathname === link.href && "bg-emerald-800 text-white"
+                  )}
                 >
-                  <link.icon size={20} className="text-gray-500" />
+                  <link.icon size={20} className={cn("text-gray-500 group-hover:text-black",pathname === link.href && " text-white")} />
                   <span className="hidden lg:block">{link.label}</span>
                 </Link>
               );
